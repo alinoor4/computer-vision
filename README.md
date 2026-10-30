@@ -12,11 +12,10 @@ selection.
 | 01 | [`Lab01_Skin_Cancer_ISIC.ipynb`](lab01/Lab01_Skin_Cancer_ISIC.ipynb) | Transfer learning with 8 pretrained CNNs (frozen feature extractors), comparison of 7 classical classifiers on the extracted features, and a computational-efficiency comparison | [ISIC 9-class skin cancer](https://www.kaggle.com/datasets/nodoubttome/skin-cancer9-classesisic) |
 | 02 | [`Lab02_Skin_Cancer_HAM10000.ipynb`](lab02/Lab02_Skin_Cancer_HAM10000.ipynb) | Effect of spatial filtering (none, average, Gaussian, median, sharpen, Sobel) on a pretrained CNN: 3 backbones × 6 conditions = 18 experiments on one lesion-grouped split | [HAM10000](https://www.kaggle.com/datasets/kmader/skin-cancer-mnist-ham10000) |
 | 03 | [`Lab03_Edge_Detection_HAM10000.ipynb`](lab03/Lab03_Edge_Detection_HAM10000.ipynb) | Edge detection and its impact on classification, compared against the raw (Lab 01) and filtered (Lab 02) inputs | HAM10000 |
+| 04 | [`Lab_04_Skin_Lesion_Boundary.ipynb`](lab04/Lab_04_Skin_Lesion_Boundary.ipynb) | Skin-lesion boundary detection: grayscale + Gaussian filtering, Canny edge detection at three threshold settings, selection of the best one, and lesion boundary extraction with morphology and contour detection (scored against an Otsu-threshold reference mask) | 5 dermoscopic images from the [ISIC Archive](https://www.isic-archive.com/) (downloaded automatically) |
 | 05 | [`LAB_05_HOG_Defect_Detection.ipynb`](lab05/LAB_05_HOG_Defect_Detection.ipynb) | HOG features + ML classifier for industrial defect detection (binary normal/defective and multi-class) | [NEU steel surface defects](https://www.kaggle.com/datasets/sovitrath/neu-steel-surface-defect-detect-trainvalid-split) |
 | 06 | [`Landmark_Recognition_SIFT.ipynb`](lab06/Landmark_Recognition_SIFT.ipynb) | Landmark recognition with SIFT matching, Lowe's ratio test and RANSAC verification, rejection of landmarks not in the database, and localisation of the match | 5 landmarks × 5 reference photos (Wikimedia Commons), supplied as `landmark_dataset.zip` |
 | 07 | [`Lab_07_GA_HOG_PneumoniaMNIST.ipynb`](lab07/Lab_07_GA_HOG_PneumoniaMNIST.ipynb) | Does genetic-algorithm feature selection on HOG features beat a plain HOG + RBF-SVM baseline, with fewer features? | [PneumoniaMNIST](https://medmnist.com/) |
-
-Lab 04 (Canny-based lesion boundary detection) has no notebook in this repo.
 
 Each notebook keeps its saved outputs, so the results are visible on GitHub without
 re-running anything.
@@ -26,7 +25,7 @@ re-running anything.
 They were written for **Google Colab** and also run locally.
 
 **Colab:** upload a notebook, choose *Runtime → Change runtime type → T4 GPU* (strongly
-recommended for the CNN labs 01–03), then *Runtime → Run all*.
+recommended for the CNN labs 01–03; Lab 04 uses OpenCV on the CPU), then *Runtime → Run all*.
 
 **Locally:**
 
@@ -41,7 +40,7 @@ jupyter lab
 
 The datasets are **not** included in this repository:
 
-- Labs 01, 02, 03, 05 download their data with `kagglehub` on first run (you may be asked
+- Labs 01, 02, 03, 04, 05 download their data with `kagglehub` on first run (you may be asked
   for Kaggle credentials). Each notebook also has a setting to point at a local copy.
 - Lab 06 expects `landmark_dataset.zip` (or the extracted `landmark_database/` and
   `query_images/` folders) next to the notebook. It needs OpenCV ≥ 4.4 for SIFT.
